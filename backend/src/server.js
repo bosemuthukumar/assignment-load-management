@@ -12,7 +12,7 @@ const app = express();
 // app.use(cors());
 app.use(
   cors({
-    origin: "https://assignment-load-management-9m1ykdxaz.vercel.app", // your frontend URL
+    origin: "https://assignment-load-management-9m1ykdxaz.vercel.app",
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   }),
