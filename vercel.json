@@ -1,16 +1,12 @@
 {
-  "version": 2,
   "routes": [
     {
-      "handle": "filesystem"
-    },
-    {
       "src": "/api/(.*)",
-      "dest": "/backend/server.js"
+      "dest": "/api/server.js"
     },
     {
       "src": "/(.*)",
-      "dest": "/frontend/build/index.html"
+      "dest": "/frontend/build/$1"
     }
   ]
 }
