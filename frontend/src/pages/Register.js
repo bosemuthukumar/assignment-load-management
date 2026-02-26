@@ -127,11 +127,11 @@ const Register = ({ type = "user" }) => {
             {loading ? "Registering..." : "Register"}
           </button>
         </form>
-        <p className="auth-link">
+        {/* <p className="auth-link">
           <Link to={getOtherRegisterUrl()}>
             ← Switch to {getOtherRegisterText()}
           </Link>
-        </p>
+        </p> */}
         <p className="auth-link">
           Already have an account?{" "}
           <Link to={isAdmin ? "/admin/login" : "/user/login"}>Login here</Link>
