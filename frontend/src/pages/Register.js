@@ -52,9 +52,9 @@ const Register = ({ type = "user" }) => {
 
     setLoading(true);
     try {
-      await authService.register(formData, isAdmin ? "user" : "admin");
+      await authService.register(formData, isAdmin ? "user" : "user");
 
-      navigate(isAdmin ? "/user/dashboard" : "/admin/dashboard");
+      navigate(isAdmin ? "/user/dashboard" : "/user/dashboard");
     } catch (err) {
       setError(err.response?.data?.message || "Registration failed");
     } finally {
@@ -63,11 +63,11 @@ const Register = ({ type = "user" }) => {
   };
 
   const getOtherRegisterUrl = () => {
-    return isAdmin ? "/user/register" : "/admin/register";
+    return isAdmin ? "/user/register" : "/user/register";
   };
 
   const getOtherRegisterText = () => {
-    return isAdmin ? "User Registration" : "Admin Registration";
+    return isAdmin ? "User Registration" : "User Registration";
   };
 
   return (
@@ -75,7 +75,7 @@ const Register = ({ type = "user" }) => {
       <div
         className={`auth-box ${isAdmin ? "admin-login-box" : "user-login-box"}`}
       >
-        <h2>{isAdmin ? "User Registration" : "Admin Registration"}</h2>
+        <h2>{isAdmin ? "User Registration" : "User Registration"}</h2>
 
         {error && <div className="error-message">{error}</div>}
         <form onSubmit={handleSubmit}>
@@ -134,7 +134,7 @@ const Register = ({ type = "user" }) => {
         </p> */}
         <p className="auth-link">
           Already have an account?{" "}
-          <Link to={isAdmin ? "/admin/login" : "/user/login"}>Login here</Link>
+          <Link to={isAdmin ? "/user/login" : "/user/login"}>Login here</Link>
         </p>
       </div>
     </div>

@@ -32,9 +32,9 @@ const Login = ({ type = "user" }) => {
 
     setLoading(true);
     try {
-      await authService.login(formData, isAdmin ? "user" : "admin");
+      await authService.login(formData, isAdmin ? "user" : "user");
 
-      navigate(isAdmin ? "/user/dashboard" : "/admin/dashboard");
+      navigate(isAdmin ? "/user/dashboard" : "/user/dashboard");
     } catch (err) {
       setError(err.response?.data?.message || "Login failed");
     } finally {
@@ -43,11 +43,11 @@ const Login = ({ type = "user" }) => {
   };
 
   const getOtherLoginUrl = () => {
-    return isAdmin ? "/user/login" : "/admin/login";
+    return isAdmin ? "/user/login" : "/user/login";
   };
 
   const getOtherLoginText = () => {
-    return isAdmin ? "User Login" : "Admin Login";
+    return isAdmin ? "User Login" : "User Login";
   };
 
   return (
@@ -55,7 +55,7 @@ const Login = ({ type = "user" }) => {
       <div
         className={`auth-box ${isAdmin ? "admin-login-box" : "user-login-box"}`}
       >
-        <h2>{isAdmin ? "User Login" : "Admin Login"}</h2>
+        <h2>{isAdmin ? "User Login" : "User Login"}</h2>
         <p className="login-subtitle">
           {isAdmin ? "Administrator Access" : "User Access"}
         </p>
@@ -88,7 +88,7 @@ const Login = ({ type = "user" }) => {
           >
             {loading
               ? "Logging in..."
-              : `Login as ${isAdmin ? "User" : "Admin"}`}
+              : `Login as ${isAdmin ? "User" : "User"}`}
           </button>
         </form>
         {/* <p className="auth-link">
@@ -96,7 +96,7 @@ const Login = ({ type = "user" }) => {
         </p> */}
         <p className="auth-link">
           Don't have an account?{" "}
-          <Link to={isAdmin ? "/user/register" : "/admin/register"}>
+          <Link to={isAdmin ? "/user/register" : "/user/register"}>
             Register here
           </Link>
         </p>
