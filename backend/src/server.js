@@ -11,12 +11,15 @@ const app = express();
 // Middleware
 // app.use(cors());
 
-// Allow only your Netlify frontend
 app.use(
   cors({
-    origin: "https://assignment-load-management.netlify.app", // replace with your actual Netlify URL
+    origin: "https://preeminent-muffin-6477a6.netlify.app",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
   }),
 );
+
+app.options("*", cors());
 
 // app.use(
 //   cors({
