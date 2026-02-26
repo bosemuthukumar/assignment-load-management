@@ -7,14 +7,11 @@ const sequelize = new Sequelize(
   process.env.DB_PASSWORD,
   {
     host: process.env.DB_HOST,
-    port: process.env.DB_PORT || 3306,
+    port: process.env.DB_PORT || 3307,
     dialect: "mysql",
-    dialectOptions: {
-      ssl: {
-        require: true,
-        rejectUnauthorized: false,
-      },
-    },
+    // dialectOptions: {
+    //   ssl: process.env.NODE_ENV === "production" ? "Amazon RDS" : false,
+    // },
     logging: false,
     define: {
       timestamps: true,
