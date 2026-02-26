@@ -4,7 +4,7 @@ const express = require("express");
 const cors = require("cors");
 
 // Import Sequelize and routes
-const { sequelize } = require("./src/models");
+// const { sequelize } = require("./src/models");
 const authRoutes = require("./src/routes/authRoutes");
 const loadRoutes = require("./src/routes/loadRoutes");
 const locationRoutes = require("./src/routes/locationRoutes");
@@ -45,17 +45,17 @@ app.get("/", (req, res) => {
 });
 
 // Health check
-app.get("/api/health", async (req, res) => {
-  try {
-    await sequelize.authenticate();
-    res.json({ message: "Server and database running" });
-  } catch (error) {
-    res.status(500).json({
-      message: "Database connection failed",
-      error: error.message,
-    });
-  }
-});
+// app.get("/api/health", async (req, res) => {
+//   try {
+//     await sequelize.authenticate();
+//     res.json({ message: "Server and database running" });
+//   } catch (error) {
+//     res.status(500).json({
+//       message: "Database connection failed",
+//       error: error.message,
+//     });
+//   }
+// });
 
 // =======================
 // ERROR HANDLER
@@ -86,7 +86,7 @@ if (!PORT) {
 
 app.listen(PORT, "0.0.0.0", async () => {
   try {
-    await sequelize.authenticate();
+    // await sequelize.authenticate();
     console.log("Database connected successfully");
     console.log(`Server running on port ${PORT}`);
   } catch (error) {
