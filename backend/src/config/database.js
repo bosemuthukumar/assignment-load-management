@@ -9,9 +9,9 @@ const sequelize = new Sequelize(
     host: process.env.DB_HOST,
     port: process.env.DB_PORT || 3307,
     dialect: "mysql",
-    // dialectOptions: {
-    //   ssl: process.env.NODE_ENV === "production" ? "Amazon RDS" : false,
-    // },
+    dialectOptions: {
+      ssl: process.env.NODE_ENV === "production" ? "Amazon RDS" : false,
+    },
     logging: false,
     define: {
       timestamps: true,

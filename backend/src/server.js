@@ -11,24 +11,24 @@ const app = express();
 // Middleware
 // app.use(cors());
 
-app.use(
-  cors({
-    origin: "https://preeminent-muffin-6477a6.netlify.app/user",
-    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true,
-  }),
-);
-
-app.options("*", cors());
-
 // app.use(
 //   cors({
-//     origin: "https://assignment-load-management-phyp.vercel.app",
-//     methods: ["GET", "POST", "PUT", "DELETE"],
+//     origin: "https://preeminent-muffin-6477a6.netlify.app/user",
+//     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+//     allowedHeaders: ["Content-Type", "Authorization"],
 //     credentials: true,
 //   }),
 // );
+
+// app.options("*", cors());
+
+app.use(
+  cors({
+    origin: "https://assignment-load-management-in38.vercel.app/",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true,
+  }),
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
