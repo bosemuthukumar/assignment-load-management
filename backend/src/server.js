@@ -24,7 +24,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "https://assignment-load-management-in38.vercel.app/",
+    origin: "https://assignment-load-management-in38.vercel.app",
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true,
   }),
