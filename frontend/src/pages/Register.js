@@ -13,7 +13,7 @@ const Register = ({ type = "user" }) => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const isAdmin = type === "admin";
+  const isAdmin = type === "user";
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -52,9 +52,9 @@ const Register = ({ type = "user" }) => {
 
     setLoading(true);
     try {
-      await authService.register(formData, isAdmin ? "admin" : "user");
+      await authService.register(formData, isAdmin ? "user" : "admin");
 
-      navigate(isAdmin ? "/admin/dashboard" : "/user/dashboard");
+      navigate(isAdmin ? "/user/dashboard" : "/admin/dashboard");
     } catch (err) {
       setError(err.response?.data?.message || "Registration failed");
     } finally {

@@ -11,7 +11,7 @@ const Login = ({ type = "user" }) => {
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const isAdmin = type === "admin";
+  const isAdmin = type === "user";
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -32,9 +32,9 @@ const Login = ({ type = "user" }) => {
 
     setLoading(true);
     try {
-      await authService.login(formData, isAdmin ? "admin" : "user");
+      await authService.login(formData, isAdmin ? "user" : "admin");
 
-      navigate(isAdmin ? "/admin/dashboard" : "/user/dashboard");
+      navigate(isAdmin ? "/user/dashboard" : "/admin/dashboard");
     } catch (err) {
       setError(err.response?.data?.message || "Login failed");
     } finally {
@@ -88,7 +88,7 @@ const Login = ({ type = "user" }) => {
           >
             {loading
               ? "Logging in..."
-              : `Login as ${isAdmin ? "Admin" : "User"}`}
+              : `Login as ${isAdmin ? "User" : "Admin"}`}
           </button>
         </form>
         {/* <p className="auth-link">
@@ -96,7 +96,7 @@ const Login = ({ type = "user" }) => {
         </p> */}
         <p className="auth-link">
           Don't have an account?{" "}
-          <Link to={isAdmin ? "/admin/register" : "/user/register"}>
+          <Link to={isAdmin ? "/user/register" : "/admin/register"}>
             Register here
           </Link>
         </p>
