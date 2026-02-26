@@ -9,7 +9,14 @@ const locationRoutes = require("./routes/locationRoutes");
 const app = express();
 
 // Middleware
-app.use(cors());
+// app.use(cors());
+
+// Allow only your Netlify frontend
+app.use(
+  cors({
+    origin: "https://assignment-load-management.netlify.app", // replace with your actual Netlify URL
+  }),
+);
 
 // app.use(
 //   cors({

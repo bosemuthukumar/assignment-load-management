@@ -58,7 +58,7 @@ const Load = sequelize.define(
     },
   },
   {
-    tableName: "Load",
+    tableName: "Loads",
   },
 );
 
