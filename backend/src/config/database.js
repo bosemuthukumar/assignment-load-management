@@ -1,20 +1,25 @@
 const { Sequelize } = require("sequelize");
 require("dotenv").config();
 
-const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
-  host: DB_HOST,
-  port: DB_PORT,
-  dialect: "mysql",
+const sequelize = new Sequelize(
+  process.env.DB_NAME,
+  process.env.DB_USER,
+  process.env.DB_PASSWORD,
+  {
+    host: process.env.DB_HOST,
+    port: process.env.DB_PORT,
+    dialect: "mysql",
 
-  dialectOptions: {
-    ssl: {
-      require: true,
-      rejectUnauthorized: false, // IMPORTANT: allows Railway SSL
+    dialectOptions: {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false, // IMPORTANT: allows Railway SSL
+      },
     },
-  },
 
-  logging: false,
-});
+    logging: false,
+  },
+);
 
 // Test connection
 async function connectDB() {
