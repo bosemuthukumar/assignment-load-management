@@ -1,34 +1,23 @@
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-const { sequelize } = require("./models");
-const authRoutes = require("./routes/authRoutes");
-const loadRoutes = require("./routes/loadRoutes");
-const locationRoutes = require("./routes/locationRoutes");
+const { sequelize } = require("../models"); // adjust path if needed
+const authRoutes = require("../routes/authRoutes");
+const loadRoutes = require("../routes/loadRoutes");
+const locationRoutes = require("../routes/locationRoutes");
 
 const app = express();
 
-// Middleware
-// app.use(cors());
-
-// app.use(
-//   cors({
-//     origin: "https://preeminent-muffin-6477a6.netlify.app/user",
-//     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-//     allowedHeaders: ["Content-Type", "Authorization"],
-//     credentials: true,
-//   }),
-// );
-
-// app.options("*", cors());
-
+// CORS
 app.use(
   cors({
     origin: "https://assignment-load-management-in38.vercel.app",
-    methods: ["GET", "POST", "PUT", "DELETE"],
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     credentials: true,
-  }),
+  })
 );
+
+// Body parser
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -38,11 +27,21 @@ app.use("/api/load", loadRoutes);
 app.use("/api/location", locationRoutes);
 
 // Health check
-app.get("/api/health", (req, res) => {
-  res.json({ message: "Server is running" });
+app.get("/api/health", async (req, res) => {
+  try {
+    await sequelize.authenticate();
+    res.json({
+      message: "Server and database running",
+    });
+  } catch (error) {
+    res.status(500).json({
+      message: "Database connection failed",
+      error: error.message,
+    });
+  }
 });
 
-// Error handling middleware
+// Error handler
 app.use((err, req, res, next) => {
   console.error(err);
   res.status(err.status || 500).json({
@@ -52,26 +51,10 @@ app.use((err, req, res, next) => {
 
 // 404 handler
 app.use((req, res) => {
-  res.status(404).json({ message: "Route not found" });
+  res.status(404).json({
+    message: "Route not found",
+  });
 });
 
-// Database connection and server start
-const PORT = process.env.MEETING_POINT || 4000;
-
-sequelize
-  .authenticate()
-  .then(() => {
-    console.log("Database connection successful");
-    return sequelize.sync({ alter: true });
-  })
-  .then(() => {
-    app.listen(PORT, () => {
-      console.log(`Server is running on port ${PORT}`);
-    });
-  })
-  .catch((error) => {
-    console.error("Unable to connect to the database:", error);
-    process.exit(1);
-  });
-
+// IMPORTANT: Export app for Vercel
 module.exports = app;
