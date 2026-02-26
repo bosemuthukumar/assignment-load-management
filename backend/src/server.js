@@ -25,6 +25,9 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/auth", authRoutes);
 app.use("/api/load", loadRoutes);
 app.use("/api/location", locationRoutes);
+app.get("/", (req, res) => {
+  res.json({ message: "Welcome to the Load Management API" });
+});
 
 // Health check
 app.get("/api/health", async (req, res) => {

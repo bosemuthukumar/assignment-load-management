@@ -2,7 +2,7 @@ import axios from "axios";
 
 const API_URL =
   process.env.REACT_APP_API_URL ||
-  "https://assignment-load-management-in38.vercel.app/api";
+  "/api";
 
 const apiClient = axios.create({
   baseURL: API_URL,
