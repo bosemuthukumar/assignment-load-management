@@ -16,6 +16,7 @@ app.use(
     origin: "https://preeminent-muffin-6477a6.netlify.app",
     methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
     allowedHeaders: ["Content-Type", "Authorization"],
+    credentials: true,
   }),
 );
 
