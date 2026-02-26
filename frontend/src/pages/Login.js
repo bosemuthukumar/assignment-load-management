@@ -91,9 +91,9 @@ const Login = ({ type = "user" }) => {
               : `Login as ${isAdmin ? "Admin" : "User"}`}
           </button>
         </form>
-        <p className="auth-link">
+        {/* <p className="auth-link">
           <Link to={getOtherLoginUrl()}>← Switch to {getOtherLoginText()}</Link>
-        </p>
+        </p> */}
         <p className="auth-link">
           Don't have an account?{" "}
           <Link to={isAdmin ? "/admin/register" : "/user/register"}>
