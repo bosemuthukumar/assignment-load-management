@@ -86,7 +86,7 @@ app.use((req, res) => {
 // IMPORTANT FOR RAILWAY
 const PORT = process.env.PORT || 8080;
 
-app.listen(PORT, async () => {
+app.listen(PORT, "0.0.0.0", async () => {
 
   try {
 
