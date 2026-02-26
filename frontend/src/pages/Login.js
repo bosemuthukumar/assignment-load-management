@@ -55,7 +55,7 @@ const Login = ({ type = "user" }) => {
       <div
         className={`auth-box ${isAdmin ? "admin-login-box" : "user-login-box"}`}
       >
-        <h2>{isAdmin ? "Admin Login" : "User Login"}</h2>
+        <h2>{isAdmin ? "User Login" : "Admin Login"}</h2>
         <p className="login-subtitle">
           {isAdmin ? "Administrator Access" : "User Access"}
         </p>

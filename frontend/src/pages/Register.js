@@ -75,7 +75,7 @@ const Register = ({ type = "user" }) => {
       <div
         className={`auth-box ${isAdmin ? "admin-login-box" : "user-login-box"}`}
       >
-        <h2>{isAdmin ? "Admin Registration" : "User Registration"}</h2>
+        <h2>{isAdmin ? "User Registration" : "Admin Registration"}</h2>
 
         {error && <div className="error-message">{error}</div>}
         <form onSubmit={handleSubmit}>
