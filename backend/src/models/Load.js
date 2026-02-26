@@ -2,7 +2,7 @@ const { DataTypes } = require("sequelize");
 const sequelize = require("../config/database");
 
 const Load = sequelize.define(
-  "Loads",
+  "Load",
   {
     id: {
       type: DataTypes.INTEGER,
@@ -58,7 +58,7 @@ const Load = sequelize.define(
     },
   },
   {
-    tableName: "Loads",
+    tableName: "Load",
   },
 );
 
