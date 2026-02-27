@@ -2,9 +2,9 @@ require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
 const { sequelize } = require("./models");
-const authRoutes = require("./api/authRoutes");
-const loadRoutes = require("./api/loadRoutes");
-const locationRoutes = require("./api/locationRoutes");
+const authRoutes = require("./routes/authRoutes");
+const loadRoutes = require("./routes/loadRoutes");
+const locationRoutes = require("./routes/locationRoutes");
 
 const app = express();
 
