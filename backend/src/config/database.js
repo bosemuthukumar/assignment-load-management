@@ -1,5 +1,8 @@
-const { Sequelize } = require("sequelize");
 require("dotenv").config();
+const { Sequelize } = require("sequelize");
+
+// Convert port to number
+const DB_PORT = parseInt(process.env.DB_PORT, 10);
 
 const sequelize = new Sequelize(
   process.env.DB_NAME,
@@ -7,17 +10,12 @@ const sequelize = new Sequelize(
   process.env.DB_PASSWORD,
   {
     host: process.env.DB_HOST,
-    port: process.env.DB_PORT,
+    port: DB_PORT,
     dialect: "mysql",
-
+    logging: console.log, // optional: shows SQL queries
     dialectOptions: {
-      ssl: {
-        require: true,
-        rejectUnauthorized: false, // IMPORTANT: allows Railway SSL
-      },
+      ssl: false, // local MySQL does not need SSL
     },
-
-    logging: false,
   },
 );
 
