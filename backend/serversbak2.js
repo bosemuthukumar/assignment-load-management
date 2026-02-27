@@ -5,9 +5,9 @@ const cors = require("cors");
 
 // Import Sequelize and routes
 const { sequelize } = require("./src/models");
-const authRoutes = require("./src/routes/authRoutes");
-const loadRoutes = require("./src/routes/loadRoutes");
-const locationRoutes = require("./src/routes/locationRoutes");
+const authRoutes = require("./src/api/authRoutes");
+const loadRoutes = require("./src/api/loadRoutes");
+const locationRoutes = require("./src/api/locationRoutes");
 
 const app = express();
 

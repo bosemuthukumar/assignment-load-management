@@ -5,7 +5,7 @@ const API_URL =
   process.env.REACT_APP_API_URL || // e.g., "http://localhost:4000/api"
   (process.env.NODE_ENV === "production"
     ? "https://assignment-load-management-in38.vercel.app/api"
-    : "http://localhost:4000/api");
+    : "/api");
 
 const apiClient = axios.create({
   baseURL: API_URL,
