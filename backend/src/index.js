@@ -10,18 +10,26 @@ const app = express();
 
 // Middleware
 // app.use(cors()); // Allow all origins for now. Later you can restrict if needed
-const corsOptions = {
-  origin: [
-    "http://localhost:3000",
-    "https://assignment-load-management-in38.vercel.app",
-  ], // your frontend URLs
-  methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"],
-  credentials: true, // allows cookies or auth headers
-};
+// const corsOptions = {
+//   origin: "https://arena-tail-penalties-email.trycloudflare.com",
+//   // origin: [
+//   //   "https://accounts-william-more-colors.trycloudflare.com",
+//   //   "https://assignment-load-management-in38.vercel.app",
+//   // ], // your frontend URLs
+//   methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+//   allowedHeaders: ["Content-Type", "Authorization"],
+//   credentials: true, // allows cookies or auth headers
+// };
 
-app.use(cors(corsOptions));
-app.options("*", cors(corsOptions)); // handle preflight
+// app.use(cors(corsOptions));
+// app.options("*", cors(corsOptions)); // handle preflight
+app.use(
+  cors({
+    origin: "https://neon-speculoos-84356a.netlify.app", // Replace this
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    credentials: true, // if you use cookies or auth headers
+  }),
+);
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -59,8 +67,8 @@ sequelize
   })
   .then(() => {
     // Start the server here
-    app.listen(PORT, () => {
-      console.log(`🚀 Server is running on port ${PORT}`);
+    app.listen(PORT, "0.0.0.0", () => {
+      console.log(`Server running on port ${PORT}`);
     });
   })
   .catch((error) => {

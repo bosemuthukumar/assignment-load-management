@@ -108,7 +108,7 @@ const LocationMap = ({ onLocationSelect, initialLocation = "" }) => {
   if (loadError) {
     return (
       <div className="location-map-error">
-        <p>❌ Error: Failed to load Google Maps</p>
+        <p> Error: Failed to load Google Maps</p>
         <small>
           Check: 1) API Key in .env, 2) API is enabled in Google Cloud
         </small>
@@ -169,7 +169,7 @@ const LocationMap = ({ onLocationSelect, initialLocation = "" }) => {
           placeholder="Click on map or search to select location"
         />
         <small>
-          📍 Lat: {markerPosition.lat.toFixed(4)}, Lng:{" "}
+           Lat: {markerPosition.lat.toFixed(4)}, Lng:{" "}
           {markerPosition.lng.toFixed(4)}
         </small>
       </div>
